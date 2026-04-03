@@ -1,0 +1,117 @@
+/*
+    Name: Snehal Sinha
+    File Name: clock.css
+    Date: March 26, 2026
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a2c9fc, #cfe7ff, #edf6ff);
+    color: #0042ac;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.clock-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: #edf6ff;
+    border-radius: 24px;
+    padding: 3rem 3rem;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(181, 201, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    transition: transform 1s ease, box-shadow 1s ease;
+    /*padding: 1rem;*/
+}
+
+.clock-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 66, 172, 0.2);
+}
+
+.clock-title {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+    color: #003f97;
+}
+
+.clock-time {
+    font-family: "Audiowide", sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    color: #003f97;
+    word-break: break-word;
+}
+
+.clock-date {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    color: #0046a9;
+    letter-spacing: 0.03em;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .page {
+        padding: 4rem;
+    }
+
+    .clock-card {
+    padding: 2.5rem 2rem;
+    }
+
+    .clock-title {
+    font-size: 1.5rem;
+    }
+
+    .clock-time {
+    font-size: 3.25rem;
+    }
+
+    .clock-date {
+    font-size: 1.1rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .page {
+        padding: 5rem;
+    }
+    .clock-card {
+    max-width: 800px;
+    padding: 3rem 2.5rem;
+    }
+
+    .clock-title {
+    font-size: 1.75rem;
+    }
+
+    .clock-time {
+    font-size: 4rem;
+    }
+
+    .clock-date {
+    font-size: 1.2rem;
+    }
+}

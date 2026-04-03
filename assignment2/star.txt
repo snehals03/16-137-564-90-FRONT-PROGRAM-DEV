@@ -1,0 +1,7 @@
+
+
+*lab1
+Instead of using a bunch of <div> tags, HTML5 gives us semantic elements 
+like <header>, <nav>, <main>, <section>, <article>, <aside>, and <footer>. 
+These make the structure clearer and more meaningful than plain divs. 
+(https://www.geeksforgeeks.org/html/10-alternatives-to-the-div-html-tag/?utm_source=copilot.com)

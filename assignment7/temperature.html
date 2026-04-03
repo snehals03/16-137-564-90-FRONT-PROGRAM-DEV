@@ -1,0 +1,39 @@
+<!--
+    Name: Snehal Sinha
+    File Name: temperature.html
+    Date: March 7th, 2026
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="temperature.css">
+    
+    <title>Temperature Converter</title>            
+</head>
+<body>
+    <div class="container">
+        <h2>Temperature Converter</h2>
+        <p>Enter a value in either Celsius or Fahrenheit to see the converted temperature.</p>
+
+        <!-- form for user input -->
+        <form>
+            <p>
+                <label for="inputCelsius">Celsius:</label>
+                <input type="number" id="inputCelsius"/>
+            </p>
+
+            <p>
+                <label for="inputFahrenheit">Fahrenheit:</label>
+                <input type="number" id="inputFahrenheit"/>
+            </p>
+        </form>
+
+        <h3>Converted Temperature:</h3>
+        <p id="displayTemp"></p>
+
+        <script src="temperature.js"></script>
+    </div>
+</body>
+</html>

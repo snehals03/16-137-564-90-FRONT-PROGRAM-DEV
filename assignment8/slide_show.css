@@ -1,0 +1,75 @@
+/*
+    Name: Snehal Sinha
+    File Name: slide_show.css
+    Date: March 14th, 2026
+    Description: This file styles the flower slideshow page.
+*/
+
+body {
+    font-family: "Averia Serif Libre", serif;
+    background: #e7e7e7;
+    text-align: center;
+    margin: 0;
+    padding: 40px 20px;
+    color: #787878;
+}
+
+h1 {
+    font-family: "Momo Signature", serif;
+    color: #403a42;
+    margin-bottom: 25px;
+    font-size: 3rem;
+    font-weight: 200;
+    letter-spacing: 0px;
+}
+
+#slideshow-container {
+    width: 420px;
+    max-width: 90%;
+    margin: 0 auto;
+    /*background-color: #ffffff;*/
+    padding: 10px;
+    border-radius: 20px;
+    /*box-shadow: 0 6px 18px rgba(255, 248, 248, 0.1);*/
+}
+
+#slide-image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    border-radius: 16px;
+    margin: 0 auto;
+    /*border: 3px solid #ffffff;*/
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+
+}
+
+#caption {
+    font-family: "Averia Serif Libre", serif;
+    font-size: 1.5rem;
+    padding: 12px;
+    color: #565d60;
+    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 25px 12px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    #slideshow-container {
+        padding: 20px;
+    }
+
+    #caption {
+        font-size: 0.80rem;
+    }
+}
