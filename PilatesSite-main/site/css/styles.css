@@ -1,0 +1,282 @@
+/*
+Studio 360: Shared Stylesheet
+   Common styles used across all pages
+*/
+
+
+/*-----------------------------------------
+   RESET + BASE STYLES
+-----------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-body: #F8F5F2;
+    --header-tan: #D8D3CC;
+    --card-bg: #E8E4E1;
+    --placeholder-gray: #D6D2CD;
+    --text-dark: #1A1A1A;
+    --accent-gray: #707070;
+    --border-light: #CCC;
+    --border-medium: #888;
+    --border-dark: #000;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+
+/******************************
+MEDIA + IMAGES
+********************************/
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/******************************
+HEADER + NAVIGATION
+********************************/
+
+header {
+    background-color: var(--header-tan);
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--white);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    opacity: 0.7;
+}
+
+
+/**********************************************
+BUTTONS + LINKS
+********************************/
+
+.book-btn {
+    background-color: var(--white);
+    border: 1px solid var(--border-dark);
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background-color: var(--border-dark);
+    color: var(--white);
+}
+
+.pill-link {
+    display: inline-block;
+    padding: 14px 34px;
+    background-color: var(--white);
+    border: 1px solid var(--border-dark);
+    border-radius: 32px;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.pill-link:hover {
+    background-color: var(--border-dark);
+    color: var(--white);
+}
+
+.learn-more,
+.learn-inline {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: var(--white);
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: 0.3s;
+}
+
+.learn-more:hover,
+.learn-inline:hover {
+    background-color: var(--border-dark);
+    color: var(--white);
+}
+
+
+/*******************************************
+TYPOGRAPHY + SECTION HEADINGS
+********************************/
+
+.page-title {
+    text-align: center;
+    padding: 70px 20px 50px;
+}
+
+.page-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    letter-spacing: 0.04em;
+}
+
+.page-title p {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-subheading {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+
+/*********************************************************
+SHARED SECTION LAYOUTS
+********************************/
+
+.center-section {
+    padding: 80px 8%;
+}
+
+.alt-section {
+    background-color: #F3EFEA;
+    padding: 80px 8%;
+    border-top: 1px solid #D2CCC5;
+    border-bottom: 1px solid #D2CCC5;
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 38px;
+}
+
+
+/******************************************
+GENERIC CONTENT HELPERS
+*******************************/
+
+.placeholder-box {
+    width: 100%;
+    min-height: 250px;
+    background-color: #ECE8E3;
+    border: 1px solid #666;
+    position: relative;
+    overflow: hidden;
+}
+
+.placeholder-box::before,
+.placeholder-box::after {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 1px;
+    background-color: #666;
+    top: 50%;
+    left: -20%;
+}
+
+.placeholder-box::before {
+    transform: rotate(32deg);
+}
+
+.placeholder-box::after {
+    transform: rotate(-32deg);
+}
+
+
+/*************************************************************
+FOOTER
+****************************/
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: var(--white);
+    font-size: 12px;
+}
+
+
+/********************************************
+RESPONSIVE MEDIA QUERIES
+- Adjusting layout and typography for smaller screens
+********************************/
+
+@media screen and (max-width: 900px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .page-title h1,
+    .section-heading {
+        font-size: 42px;
+    }
+
+    .section-subheading,
+    .page-title p {
+        font-size: 16px;
+    }
+}

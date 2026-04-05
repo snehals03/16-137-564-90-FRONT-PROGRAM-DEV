@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Studio 360: Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <a href="index.html">
+          <img src="media/Logo.png" alt="Studio 360 Logo" class="logo" />
+        </a>
+
+        <nav>
+          <ul>
+            <li><button class="book-btn">Book Now ></button></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="home-hero">
+        <img
+          src="media/hero.jpg"
+          alt="Studio 360 fitness class"
+          class="hero-image"
+        />
+
+        <div class="hero-overlay">
+          <h1>Movement For Every Stage of Life</h1>
+          <p>
+            Movement-centered classes in NYC for strength, balance, recovery,
+            and confidence.
+          </p>
+          <a href="classes.html" class="pill-link">View Classes ></a>
+        </div>
+      </section>
+
+      <section class="featured-wrap">
+        <h2 class="section-heading">Featured Classes</h2>
+
+        <div class="featured-panel" aria-live="polite">
+          <div class="featured-image">
+            <button
+              class="slide-arrow left-arrow"
+              id="prev-slide"
+              type="button"
+              aria-label="Previous class"
+            >
+              &#8249;
+            </button>
+
+            <img
+              id="featured-class-image"
+              src="media/pilates.png"
+              alt="Pilates class"
+            />
+          </div>
+
+          <div class="featured-content">
+            <button
+              class="slide-arrow right-arrow"
+              id="next-slide"
+              type="button"
+              aria-label="Next class"
+            >
+              &#8250;
+            </button>
+
+            <h3 id="featured-class-title">PILATES</h3>
+
+            <p id="featured-class-description">
+              Build core strength, improve posture, and move with greater
+              control through low-impact sessions designed for all levels.
+            </p>
+
+            <p class="tag-row" id="featured-class-tags">
+              Core · Posture · Control
+            </p>
+
+            <a
+              href="classes.html"
+              class="learn-inline"
+              id="featured-class-link"
+            >
+              Learn More >
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="highlight-section">
+        <h2 class="section-heading">Membership Highlights</h2>
+        <p class="section-subheading">
+          Designed for flexibility, routine, and connection.
+        </p>
+
+        <div class="highlight-boxes">
+          <div class="highlight-box">
+            <h3>Community</h3>
+            <p>
+              A supportive studio environment where members feel welcomed,
+              encouraged, and comfortable returning.
+            </p>
+          </div>
+
+          <div class="highlight-box">
+            <h3>Flexibility</h3>
+            <p>
+              Choose classes that fit your schedule, pace, and goals without
+              making fitness feel overwhelming.
+            </p>
+          </div>
+
+          <div class="highlight-box">
+            <h3>Value</h3>
+            <p>
+              Membership options are designed to make regular practice more
+              sustainable and cost-effective.
+            </p>
+          </div>
+        </div>
+
+        <div class="center-button">
+          <a href="pricing.html" class="pill-link">Explore Plans ></a>
+        </div>
+      </section>
+
+      <section class="bottom-cta">
+        <div class="bottom-cta-box">
+          <div class="bottom-cta-text">
+            <h2>Explore your next class</h2>
+            <p>Find a session that fits your schedule.</p>
+          </div>
+
+          <a href="classes.html" class="pill-link">View Schedule ></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; Copyright 2026. Studio 360 All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

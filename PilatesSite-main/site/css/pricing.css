@@ -1,0 +1,203 @@
+/*********************************
+        PRICING PAGE STYLES
+ *********************************/
+
+
+/*************************
+        INTRO + SPLIT
+**************************/
+
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 70px;
+    align-items: center;
+    padding: 70px 8%;
+    background-color: #F3EFEA;
+    border-top: 1px solid #D2CCC5;
+    border-bottom: 1px solid #D2CCC5;
+}
+
+.split-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 54px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.split-content p {
+    font-size: 18px;
+    max-width: 720px;
+    margin-bottom: 28px;
+}
+
+.pricing-intro-image {
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.pricing-intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/******************************
+        benefits section
+*******************************/
+
+.cards-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+    margin-top: 35px;
+}
+
+.benefit-card {
+    background-color: #ECE8E3;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 10px 10px 0 #ffffff;
+}
+
+.benefit-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.benefit-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover .benefit-image img {
+    transform: scale(1.04);
+}
+
+.benefit-label {
+    background-color: var(--header-tan);
+    padding: 16px 18px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/***************************
+        pricing plans           
+****************************/
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+    margin-top: 40px;
+}
+
+.plan-card {
+    position: relative;
+    background-color: #D9D9D9;
+    border: 1px solid #BDBDBD;
+    padding: 52px 42px;
+    min-height: 420px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 12px 12px 0 #1A1A1A;
+    background-color: #E3E0DD;
+}
+
+.plan-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    margin-bottom: 25px;
+}
+
+.plan-card ul {
+    padding-left: 24px;
+    margin-bottom: 30px;
+}
+
+.plan-card li {
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+
+.plan-link {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    padding: 12px 24px;
+    background-color: white;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.plan-card:hover .plan-link {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.plan-link:hover {
+    background-color: black;
+    color: white;
+}
+
+.featured-plan {
+    border: 1px solid #8F877D;
+    background-color: #E4DFD9;
+}
+
+.plan-badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 6px 14px;
+    background-color: #1A1A1A;
+    color: white;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+
+/***************************
+        responsive
+***************************/
+
+@media screen and (max-width: 900px) {
+    .split-section,
+    .cards-three,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .split-content h2 {
+        font-size: 40px;
+    }
+
+    .plan-card h3 {
+        font-size: 42px;
+    }
+}

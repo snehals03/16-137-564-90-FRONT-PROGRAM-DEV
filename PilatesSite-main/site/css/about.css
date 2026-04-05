@@ -1,0 +1,166 @@
+/********************************
+about page stylesheet
+********************************/
+
+
+/**********************************************
+mission statement hero
+*************************************/
+
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 70px;
+    align-items: center;
+    padding: 70px 8%;
+    background-color: #F3EFEA;
+    border-top: 1px solid #D2CCC5;
+    border-bottom: 1px solid #D2CCC5;
+}
+
+.split-content h2,
+.split-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 54px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.split-content p {
+    font-size: 18px;
+    max-width: 720px;
+    margin-bottom: 28px;
+}
+
+
+/****************************
+        why choose us
+*****************************/
+
+.cards-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+    margin-top: 35px;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.image-card {
+    background-color: #ECE8E3;
+    border: 1px solid #ccc;
+}
+
+.image-card .image-top {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-image img,
+.serve-image img,
+.image-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mission-image {
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.serve-image {
+    min-height: 220px;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.image-top {
+    overflow: hidden;
+}
+
+.image-card .image-label {
+    background-color: #ffffff;
+    padding: 16px 24px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.info-card p {
+    font-size: 17px;
+}
+
+
+/********************************************
+        who we serve
+*********************************************/
+
+.who-we-serve-wrap {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 28px;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.serves-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    padding: 26px;
+    border: 1px solid #777;
+    border-radius: 22px;
+    background-color: #DDD8D1;
+}
+
+.serves-text p {
+    font-size: 19px;
+    margin-bottom: 22px;
+}
+
+.serves-text p:last-child {
+    margin-bottom: 0;
+}
+
+.serves-text strong {
+    font-weight: 700;
+}
+
+.side-cta {
+    padding: 10px 10px 10px 0;
+}
+
+.side-cta p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+
+/**********************************88
+        responsive
+*****************************************/
+
+@media screen and (max-width: 900px) {
+    .split-section,
+    .cards-three,
+    .who-we-serve-wrap,
+    .serves-card {
+        grid-template-columns: 1fr;
+    }
+
+    .split-content h2,
+    .split-content h3 {
+        font-size: 40px;
+    }
+
+    .serves-card {
+        padding: 22px;
+    }
+}

@@ -68,7 +68,7 @@ type IssueTableProps = {
 };
 
 // IssueTable Component
-//Task 5: Adding priority to the table header and rows
+// Task 5: Adding priority to the table header and rows
 class IssueTable extends React.Component<IssueTableProps> {
   render() {
     const issueRows = this.props.issues.map((issue, index) => (
