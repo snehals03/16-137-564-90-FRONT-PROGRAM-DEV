@@ -1,3 +1,9 @@
+// Student Dashboard project built with React and TypeScript.
+// App.tsx stores the student data and passes it into StudentList.
+// StudentList uses map() to render StudentCard components and filter() with useState to show all, active, or inactive students.
+// StudentCard uses props to display each student's name, grade, active status, and pass/fail result.
+// Conditional rendering is used in StudentCard to show Active/Inactive and Passed/Failed.
+// GitHub Repository Link: https://github.com/yourusername/student-dashboard
 import { useMemo, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
