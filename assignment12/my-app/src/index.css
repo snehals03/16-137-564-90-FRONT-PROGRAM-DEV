@@ -1,0 +1,248 @@
+:root {
+  --text: #4b5563;
+  --text-h: #111827;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-soft: #f9fafb;
+  --border: #d1d5db;
+  --code-bg: #f3f4f6;
+  --accent: #7c3aed;
+  --accent-bg: rgba(124, 58, 237, 0.12);
+  --accent-border: rgba(124, 58, 237, 0.35);
+  --accent-strong: #6d28d9;
+  --danger: #b91c1c;
+  --success: #166534;
+  --shadow:
+    rgba(15, 23, 42, 0.08) 0 10px 15px -3px,
+    rgba(15, 23, 42, 0.04) 0 4px 6px -2px;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/1.5 var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #d1d5db;
+    --text-h: #f9fafb;
+    --bg: #111827;
+    --surface: #1f2937;
+    --surface-soft: #111827;
+    --border: #374151;
+    --code-bg: #0f172a;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.18);
+    --accent-border: rgba(192, 132, 252, 0.45);
+    --accent-strong: #d8b4fe;
+    --danger: #f87171;
+    --success: #4ade80;
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 12px 24px -6px,
+      rgba(0, 0, 0, 0.24) 0 6px 12px -6px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.08), transparent 32%),
+    var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: min(1126px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 700;
+  color: var(--text-h);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.04em;
+  margin: 32px 0 20px;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent-strong);
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 6px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+input,
+select,
+textarea,
+a {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 14px 12px;
+  vertical-align: middle;
+}
+
+th {
+  background: var(--surface-soft);
+  color: var(--text-h);
+  font-weight: 700;
+}
+
+td {
+  color: var(--text);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-h);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent-strong);
+  box-shadow: var(--shadow);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+
+  #root {
+    border-inline: none;
+  }
+
+  h1 {
+    margin: 24px 0 18px;
+  }
+
+  th,
+  td {
+    padding: 10px 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
