@@ -10,8 +10,9 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
-const RAPIDAPI_HOST = "jsearch.p.rapidapi.com";
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+const JSEARCH_RAPIDAPI_HOST = "jsearch.p.rapidapi.com";
+const COVER_LETTER_RAPIDAPI_HOST = "ai-resume-and-job-enhancer.p.rapidapi.com";
 
 function buildJSearchQuery({ query, location }) {
   const q = (query ?? "").toString().trim();
@@ -25,12 +26,22 @@ function buildJSearchQuery({ query, location }) {
 }
 
 function normalizeEmploymentType(type) {
-  const value = (type ?? "all").toString();
+  const value = (type ?? "all").toString().trim().toLowerCase();
 
   if (value === "all") return undefined;
+  if (value === "fulltime" || value === "full-time") return "FULLTIME";
+  if (value === "parttime" || value === "part-time") return "PARTTIME";
+  if (value === "contract" || value === "contractor") return "CONTRACTOR";
+  if (value === "temporary" || value === "temp") return "TEMPORARY";
 
-  return value;
+  return value.toUpperCase();
 }
+
+app.get("/", (_req, res) => {
+  res.json({
+    message: "Job Search backend is running.",
+  });
+});
 
 app.get("/jobs", async (req, res) => {
   try {
@@ -72,11 +83,11 @@ app.get("/jobs", async (req, res) => {
       params.employment_types = normalizedEmploymentType;
     }
 
-    const response = await axios.get(`https://${RAPIDAPI_HOST}/search`, {
+    const response = await axios.get(`https://${JSEARCH_RAPIDAPI_HOST}/search`, {
       params,
       headers: {
         "Content-Type": "application/json",
-        "x-rapidapi-host": RAPIDAPI_HOST,
+        "x-rapidapi-host": JSEARCH_RAPIDAPI_HOST,
         "x-rapidapi-key": RAPIDAPI_KEY,
       },
     });
@@ -84,7 +95,10 @@ app.get("/jobs", async (req, res) => {
     const rawJobs = response?.data?.data ?? [];
 
     const jobs = rawJobs.map((j) => ({
-      id: j.job_id ?? j.job_apply_link ?? `${j.employer_name ?? ""}-${j.job_title ?? ""}`,
+      id:
+        j.job_id ??
+        j.job_apply_link ??
+        `${j.employer_name ?? ""}-${j.job_title ?? ""}`,
       title: j.job_title ?? "",
       company: j.employer_name ?? "",
       location:
@@ -135,88 +149,98 @@ app.get("/jobs", async (req, res) => {
 
 app.post("/cover-letter", async (req, res) => {
   try {
-    if (!OPENAI_API_KEY) {
+    if (!RAPIDAPI_KEY) {
       return res.status(500).json({
-        error: "Missing OPENAI_API_KEY on server",
+        error: "Missing RAPIDAPI_KEY on server",
       });
     }
 
     const { resumeText, ui, job } = req.body;
 
-    if (!job?.title || !job?.company) {
+    if (!job?.description) {
       return res.status(400).json({
-        error: "Missing job title or company",
+        error: "Missing job description",
       });
     }
 
-    const prompt = `
-Write a customized cover letter for this job.
+    const resumeContent =
+      resumeText && resumeText.trim().length > 0
+        ? resumeText
+        : "Candidate has experience in user experience design, frontend development, accessibility, research, communication, and product-focused project work.";
 
-Candidate resume:
-${resumeText || "No resume text was provided."}
-
-Search context:
-Title searched: ${ui?.query || ""}
-Location searched: ${ui?.location || ""}
-Country: ${ui?.country || ""}
-Date posted filter: ${ui?.date_posted || ""}
-Employment type filter: ${ui?.employment_type || ""}
-
-Job:
-Title: ${job.title}
-Company: ${job.company}
-Location: ${job.location || ""}
-Employment type: ${job.employmentType || ""}
-Source: ${job.source || ""}
-Apply link: ${job.applyLink || ""}
+    const jobDescription = `
+Job title: ${job?.title || ""}
+Company: ${job?.company || ""}
+Location: ${job?.location || ui?.location || ""}
+Employment type: ${job?.employmentType || ui?.employment_type || ""}
 
 Job description:
-${job.description || ""}
-
-Write the cover letter in a professional but natural tone. Keep it around 250 to 350 words.
+${job.description}
 `;
 
+    const additionalInfo = `
+Please generate a customized cover letter for this job.
+
+Search context:
+- Title searched: ${ui?.query || ""}
+- Location searched: ${ui?.location || ""}
+- Country: ${ui?.country || ""}
+- Date posted filter: ${ui?.date_posted || ""}
+- Employment type filter: ${ui?.employment_type || ""}
+
+Keep the tone professional, natural, specific, and concise.
+`;
+
+    const encodedParams = new URLSearchParams();
+
+    encodedParams.set("additional_info", additionalInfo);
+    encodedParams.set("resume_content", resumeContent);
+    encodedParams.set("job_description", jobDescription);
+
     const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You write clear, tailored cover letters based on resumes and job descriptions.",
-          },
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-        temperature: 0.7,
-      },
+      `https://${COVER_LETTER_RAPIDAPI_HOST}/cover-letter-generation`,
+      encodedParams,
       {
         headers: {
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
-          "Content-Type": "application/json",
+          "x-rapidapi-key": RAPIDAPI_KEY,
+          "x-rapidapi-host": COVER_LETTER_RAPIDAPI_HOST,
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       }
     );
 
-    const coverLetter = response.data?.choices?.[0]?.message?.content ?? "";
+    const data = response.data;
+
+    console.log("Cover letter API response:", data);
+
+    const coverLetter =
+      data?.coverLetter ||
+      data?.cover_letter ||
+      data?.content ||
+      data?.result ||
+      data?.text ||
+      data?.message ||
+      data?.generated_cover_letter ||
+      data?.cover_letter_text ||
+      data?.letter ||
+      data?.output ||
+      (typeof data === "string" ? data : JSON.stringify(data, null, 2));
 
     res.json({ coverLetter });
   } catch (error) {
     if (axios.isAxiosError(error)) {
       const status = error.response?.status ?? 500;
-      const message =
-        error.response?.data?.error?.message ||
-        error.response?.data?.message ||
-        error.message;
 
-      console.error("Cover letter request failed:", status, message);
+      console.error("Cover letter request failed:", status);
+      console.error("Cover letter API error data:", error.response?.data);
 
       return res.status(status).json({
         error: "Failed to generate cover letter",
-        upstream: { status, message },
+        upstream: {
+          status,
+          data: error.response?.data,
+          message: error.message,
+        },
       });
     }
 
@@ -225,4 +249,6 @@ Write the cover letter in a professional but natural tone. Keep it around 250 to
   }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});
